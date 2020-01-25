@@ -10,7 +10,6 @@ function Input({
   value,
   placeholder,
   error
-
 }) {
 
   return (

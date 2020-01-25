@@ -1,48 +1,49 @@
 import React, {useState} from 'react';
 import logo from './logo.svg';
 import { Form } from './components/Form/'
-import './App.css';
 import { gql } from 'apollo-boost';
+import { useLazyQuery } from '@apollo/react-hooks'
 
-import { useQuery } from '@apollo/react-hooks';
+import './App.css';
+
 
 const GET_USER = gql`
-  {
-  user(login: "feldmuesle") {
-    name
-    bio
-    url
-    company
-    resourcePath
-    repositories(first: 10) {
-      edges {
-        node {
-          id
-          name
-          isPrivate
-          updatedAt
-          url
+  query submit($login: String!) {
+    user(login: $login) {
+      name
+      bio
+      url
+      company
+      resourcePath
+      repositories(first: 10) {
+        edges {
+          node {
+            id
+            name
+            isPrivate
+            updatedAt
+            url
+          }
         }
+        totalCount
       }
-      totalCount
+      websiteUrl
+      viewerCanCreateProjects
     }
-    websiteUrl
-    viewerCanCreateProjects
   }
-}
-`;
+`
 
 function App() {
-
-  const { loading, error, data } = useQuery(GET_USER)
-
-  console.log('response:', loading, error, data)
 
   const intitialValues = {
     login: ''
   }
 
   const [values, setValues] = useState(intitialValues)
+  const [submit, {loading, data, error}] = useLazyQuery(
+    GET_USER,
+    {variables: {login: values.login}}
+  )
 
   function handleChange(event, name) {
     const value = event.target.value
@@ -55,10 +56,10 @@ function App() {
 
   function handleSubmit(event) {
     event.preventDefault()
-    console.log('handle submit', values)
+    submit()
+    console.log('handle submit', data)
   }
 
-  const errors = {}
 
   return (
     <div className="App">
