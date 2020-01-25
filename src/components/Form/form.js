@@ -6,6 +6,7 @@ import { Button } from '../Button/'
 import './form.css'
 
 function Form({
+  className,
   onSubmit,
   onChange,
   values,
@@ -13,9 +14,9 @@ function Form({
 }) {
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className={`form ${className}`}>
       {(submitErrors && submitErrors.length > 0)
-        && <ul>
+        && <ul className="form__errors">
           {submitErrors.map((err, index) => {
             return <li key={index}>{err}</li>
             }
