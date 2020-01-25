@@ -9,18 +9,26 @@ function Form({
   onSubmit,
   onChange,
   values,
-  errors
+  submitErrors
 }) {
 
   return (
     <form onSubmit={onSubmit}>
+      {(submitErrors && submitErrors.length > 0)
+        && <ul>
+          {submitErrors.map((err, index) => {
+            return <li key={index}>{err}</li>
+            }
+          )}
+        </ul>
+      }
       <Input
         label="Github user"
         name="login"
         handleChange={(e) => {onChange(e, 'login')}}
         value={values.login}
         placeholder="please enter a valid Github user"
-        error={errors.login}
+        isRequired={true}
        />
       <Button label="submit" />
     </form>
@@ -31,7 +39,7 @@ Form.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   values: PropTypes.object.isRequired,
-  errors: PropTypes.object
+  submitErrors: PropTypes.arrayOf(PropTypes.string)
 }
 
 export default Form

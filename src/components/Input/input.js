@@ -9,7 +9,7 @@ function Input({
   handleChange,
   value,
   placeholder,
-  error
+  isRequired = false
 }) {
 
   return (
@@ -24,8 +24,8 @@ function Input({
         onChange={handleChange}
         value={value}
         placeholder={placeholder}
+        required={isRequired}
       />
-      {error && <span className="form__error">{error}</span>}
     </div>
   )
 }
@@ -36,7 +36,7 @@ Input.propTypes = {
   handleChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  error: PropTypes.string
+  isRequired: PropTypes.bool
 }
 
 export default Input

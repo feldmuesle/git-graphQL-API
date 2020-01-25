@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect } from 'react';
 import logo from './logo.svg';
 import { Form } from './components/Form/'
 import { gql } from 'apollo-boost';
@@ -40,10 +40,19 @@ function App() {
   }
 
   const [values, setValues] = useState(intitialValues)
-  const [submit, {loading, data, error}] = useLazyQuery(
-    GET_USER,
-    {variables: {login: values.login}}
-  )
+  const [submit, {loading, called, data, error}] = useLazyQuery(GET_USER, { errorPolicy: 'all' })
+  const [submitErrors, setSubmitErrors] = useState([])
+
+
+  useEffect(() => {
+    if (error) {
+      const graphQLErrors = error.graphQLErrors.map((error) => error.message)
+      const netWorkError = error.networkError.message
+      setSubmitErrors([...graphQLErrors, netWorkError])
+    } else {
+      setSubmitErrors([])
+    }
+  }, [data, values]);
 
   function handleChange(event, name) {
     const value = event.target.value
@@ -56,10 +65,10 @@ function App() {
 
   function handleSubmit(event) {
     event.preventDefault()
-    submit()
-    console.log('handle submit', data)
+    submit({variables: values})
   }
 
+  console.log('data', data)
 
   return (
     <div className="App">
@@ -67,7 +76,7 @@ function App() {
         values={values}
         onChange={handleChange}
         onSubmit={handleSubmit}
-        errors={errors} />
+        submitErrors={submitErrors} />
     </div>
   );
 }
