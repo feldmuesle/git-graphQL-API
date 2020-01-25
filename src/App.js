@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import logo from './logo.svg';
+import { Form } from './components/Form/'
 import './App.css';
 import { gql } from 'apollo-boost';
 
@@ -37,32 +38,36 @@ function App() {
 
   console.log('response:', loading, error, data)
 
-  const [inputValue, setInputValue] = useState('')
+  const intitialValues = {
+    login: ''
+  }
 
-  function handleChange(event) {
+  const [values, setValues] = useState(intitialValues)
+
+  function handleChange(event, name) {
     const value = event.target.value
-    setInputValue(value)
+    setValues((prevVals) => Object.assign(
+      {},
+      prevVals,
+      {[name]: value}
+    ))
   }
 
   function handleSubmit(event) {
     event.preventDefault()
-    console.log('handle submit')
+    console.log('handle submit', values)
   }
 
+  const errors = {}
+
   return (
-      <div className="App">
-        <label htmlFor="username">Github user name</label>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="username"
-            onChange={handleChange}
-            value={inputValue}
-            placeholder="please enter a valid Github user"
-          />
-          <button type="submit">Submit</button>
-        </form>
-      </div>
+    <div className="App">
+      <Form
+        values={values}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+        errors={errors} />
+    </div>
   );
 }
 
