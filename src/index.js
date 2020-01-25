@@ -3,6 +3,33 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import ApolloClient, { gql } from 'apollo-boost';
+
+const client = new ApolloClient({
+  uri: 'https://api.github.com/graphql',
+  request: (operation) => {
+    operation.setContext({
+      headers: {
+        authorization: `Bearer ${process.env.REACT_APP_AUTH_TOKEN}`,
+      },
+    });
+  },
+});
+
+const GET_USER = gql`
+  {
+    viewer {
+      name
+      url
+    }
+  }
+`;
+
+
+client
+  .query({
+    query: GET_USER
+  }).then(console.log)
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
