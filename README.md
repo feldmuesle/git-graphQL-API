@@ -19,7 +19,7 @@ On submit, the data gets fetched and displayed.
 ## Considerations
 The project is created with `create-react-app` which is just a great way to get started without spending a lot of time on setup. After that I wanted to keep things lean and didn't install a lot of additional packages to make things sweeter, but got to have `prop-types`.
 
-Since this has been the **very first time** that I have used GraphQL and Apollo, I have chosen not implemented TypeScript (which I'm new to, too) into the project as well. Instead I've spent quite some time getting to know and play around with GitHubs GraphQL API by using Github's GraphQL Explorer,  handle Errors and implemented a simple pagination to fetch more repositories.
+Since this has been the **very first time** that I have used GraphQL and Apollo, I have chosen not to implement TypeScript into the project as well. Instead I've spent quite some time getting to know and play around with GitHubs GraphQL API by using Github's GraphQL Explorer,  handle Errors and implemented a simple pagination to fetch more repositories.
 
 ### Design
 I didn't want to spend too much time on the design, so I got heavily inspired by Github's own way of displaying information. I'm sure there's some interesting data to be fetched, but I sticked to the obvious - just to get things going.

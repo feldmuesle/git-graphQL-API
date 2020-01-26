@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Form } from '../Form/'
 import { UserInfo } from '../UserInfo/'
 import { RepositoryList } from '../RepositoryList/'
@@ -12,7 +12,7 @@ import './search.css';
 function Search() {
 
   const intitialValues = {
-    login: 'getify'
+    login: ''
   }
 
   const [values, setValues] = useState(intitialValues)
