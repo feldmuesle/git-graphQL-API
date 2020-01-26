@@ -55,7 +55,7 @@ function Search() {
       return (
         <div className="search__result">
           <UserInfo {...data.user} />
-          <RepositoryList {...data.user.repositories} />
+          <RepositoryList {...data.user.repositories} fetchMore={fetchMore} />
         </div>
       )
     }

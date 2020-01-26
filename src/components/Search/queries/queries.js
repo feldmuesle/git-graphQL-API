@@ -1,7 +1,7 @@
 import { gql } from 'apollo-boost';
 
 const GET_USER = gql`
-  query submit($login: String!) {
+  query submit($login: String!, $cursor: String) {
     user(login: $login) {
       bio
       avatarUrl
@@ -11,7 +11,7 @@ const GET_USER = gql`
       login
       name
       location
-      repositories(first: 10, orderBy: {field: UPDATED_AT, direction: DESC}) {
+      repositories(first: 5, orderBy: {field: UPDATED_AT, direction: DESC}, after: $cursor) {
         nodes {
           createdAt
           name
@@ -24,6 +24,10 @@ const GET_USER = gql`
           }
         }
         totalCount
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
       }
       websiteUrl
       url
