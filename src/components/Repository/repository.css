@@ -1,0 +1,70 @@
+.repository {
+  position: relative;
+  box-sizing: border-box;
+  width: 45%;
+  min-height: 150px;
+  padding: 5px;
+  padding-left: 0;
+  margin: 10px 10px;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.repository__name {
+  padding: 0 0 7px 5px;
+}
+
+.repository__name a {
+  color: #222;
+}
+
+.repository__language {
+  font-size: .9rem;
+  font-weight: bold;
+}
+
+.repository__language i {
+  font-size: .8rem;
+  line-height: .8rem;
+}
+
+.repository__description {
+  font-size: .875rem;
+  padding: 10px;
+  margin-bottom: 35px;
+  color: #666;
+}
+
+.repository__footer {
+  position: absolute;
+  bottom: 0;
+  height: 35px;
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  line-height: 35px;
+  background-color: #222;
+  color: #fff;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.repository__created-at {
+  font-size: .7rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .repository {
+      width: 80%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .repository {
+    background-color: #fff;
+    width: 96%;
+    margin: 30px auto;
+  }
+}

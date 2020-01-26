@@ -11,13 +11,19 @@ const GET_USER = gql`
       login
       name
       location
-      repositories(first: 10) {
+      repositories(first: 10, orderBy: {field: UPDATED_AT, direction: DESC}) {
         nodes {
           createdAt
           name
-          url
           id
+          url
+          description
+          primaryLanguage {
+            color
+            name
+          }
         }
+        totalCount
       }
       websiteUrl
       url

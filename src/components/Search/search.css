@@ -1,0 +1,38 @@
+.search__result {
+  display: flex;
+}
+
+.search__header {
+  text-align: left;
+  width: 100%;
+  background-color: #222;
+  margin-bottom: 50px;
+}
+
+.search__form {
+  margin: 20px;
+  margin-left: 50px;
+  display: inline-flex;
+}
+
+.search__loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(204,204, 204 , .3);
+  color: #666;
+  text-align: center;
+}
+
+.search__loading i {
+  margin-top: 250px;
+  font-size: 8rem;
+}
+
+@media screen and (max-width: 480px) {
+  .search__result {
+    display: block;
+  }
+}

@@ -1,0 +1,31 @@
+
+.repository__wrapper {
+  width: 60%;
+  color: #222;
+}
+
+.repository__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .repository__list {
+    justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .repository__list {
+    display: block;
+  }
+
+  .repository__wrapper {
+      width: 100%;
+      margin-top: 50px;
+      padding-top: 20px;
+      text-align: center;
+      background-color: rgba(204,204, 204 , .5);
+  }
+}
