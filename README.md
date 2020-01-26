@@ -21,9 +21,12 @@ The project is created with `create-react-app` which is just a great way to get 
 
 Since this has been the **very first time** that I have used GraphQL and Apollo, I have chosen not implemented TypeScript (which I'm new to, too) into the project as well. Instead I've spent quite some time getting to know and play around with GitHubs GraphQL API by using Github's GraphQL Explorer,  handle Errors and implemented a simple pagination to fetch more repositories.
 
+### Design
+I didn't want to spend too much time on the design, so I got heavily inspired by Github's own way of displaying information. I'm sure there's some interesting data to be fetched, but I sticked to the obvious - just to get things going.
+
 ### Number of Components
 Due to the limited scope of the project, most elements (e.g. inputs, forms, buttons) are only used once or twice and didn't require a React Component. However, I wanted to show my approach as it would be in a regular project.
-I also wanted to show my abilities to handle UI components myself, which is why I didn't use a UI framework.
+I also wanted to show my abilities to handle UI components and responsiveness myself, which is why I didn't use a UI framework.
 Instead I installed `font-awesome` to spice up things with icons.
 
 #### Folder structure
