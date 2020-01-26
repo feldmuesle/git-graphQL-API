@@ -9,13 +9,13 @@
   display: block;
   cursor: pointer;
   color: #666;
+  font-size: .875rem;
   font-weight: bold;
   padding: 6px 24px;
   text-decoration: none;
   text-shadow: 0px 1px 0px #fff;
   line-height: 1rem;
 }
-
 
 @media screen and (max-width: 480px) {
   .button i {

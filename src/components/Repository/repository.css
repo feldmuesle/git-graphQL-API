@@ -51,6 +51,11 @@
   border-bottom-right-radius: 3px;
 }
 
+.repository__footer > .repository__created-at:first-child {
+  width: 100%;
+  text-align: right;
+}
+
 .repository__created-at {
   font-size: .7rem;
 }

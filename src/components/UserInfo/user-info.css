@@ -10,6 +10,11 @@
   border-radius: 50%;
 }
 
+.user__meta--text {
+  max-width: 80%;
+  margin: 16px auto;
+}
+
 
 @media screen and (max-width: 480px) {
   .user__info {

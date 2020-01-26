@@ -26,7 +26,7 @@ function UserInfo({
           {url}
         </a>
       </p>}
-      {bio && <p className="user__meta">{bio}</p>}
+      {bio && <p className="user__meta user__meta--text">{bio}</p>}
       {isHireable && <p className="user__meta">Looking for new opportunities!!!</p>}
       {email && <p className="user__meta">{email}</p>}
       {location && <p className="user__meta">{location}</p>}

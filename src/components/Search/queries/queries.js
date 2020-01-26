@@ -11,7 +11,7 @@ const GET_USER = gql`
       login
       name
       location
-      repositories(first: 5, orderBy: {field: UPDATED_AT, direction: DESC}, after: $cursor) {
+      repositories(first: 6, orderBy: {field: UPDATED_AT, direction: DESC}, after: $cursor) {
         nodes {
           createdAt
           name

@@ -12,19 +12,11 @@ import './search.css';
 function Search() {
 
   const intitialValues = {
-    login: ''
+    login: 'getify'
   }
 
   const [values, setValues] = useState(intitialValues)
-  const [submit, { loading, data, error }] = useLazyQuery(queries.GET_USER, { errorPolicy: 'all' })
-
-  /*useEffect(() => {
-    if (!called) {
-      submit({variables: values})
-    }
-  }, []);*/
-
-
+  const [submit, { loading, data, error, fetchMore }] = useLazyQuery(queries.GET_USER, { errorPolicy: 'all' })
 
   function handleChange(event, name) {
     const value = event.target.value

@@ -22,12 +22,12 @@ function Repository({
         <a className="repository__url" href={url} target="_blank">{name}</a>
       </h3>
       {description && <p className="repository__description">{description}</p>}
-      {primaryLanguage && <div className="repository__footer">
-        <span className="repository__language">
+      <div className="repository__footer">
+        {primaryLanguage && <span className="repository__language">
           <i className="icon fas fa-crown" />{primaryLanguage.name}
-        </span>
+        </span>}
         <span className="repository__created-at">{`created: ${createdAtFormatted}`}</span>
-      </div>}
+      </div>
     </div>
   )
 }

@@ -45,7 +45,9 @@ function RepositoryList({
           return <Repository {...node} key={node.id} />
         })}
       </div>
-      {hasNextPage && <Button label="more" handleClick={() => fetchMore({
+      {hasNextPage && <Button
+        label="get more repositories"
+        handleClick={() => fetchMore({
           variables: {cursor: endCursor},
           updateQuery
         }
