@@ -1,0 +1,8 @@
+.error {
+  color: #962503;
+}
+
+.error__list {
+  list-style: none;
+  padding-left: 50px;
+}

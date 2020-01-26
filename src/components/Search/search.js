@@ -1,9 +1,9 @@
 import React, {useState, useEffect } from 'react';
 import { Form } from '../Form/'
 import { UserInfo } from '../UserInfo/'
-import { RepoList } from '../RepoList/'
+import { RepositoryList } from '../RepositoryList/'
+import { ErrorMessage } from '../ErrorMessage/'
 import { queries } from './queries/'
-import { gql } from 'apollo-boost';
 import { useLazyQuery } from '@apollo/react-hooks'
 
 import './search.css';
@@ -12,23 +12,19 @@ import './search.css';
 function Search() {
 
   const intitialValues = {
-    login: 'feldmuesle'
+    login: ''
   }
 
   const [values, setValues] = useState(intitialValues)
-  const [submit, {loading, called, data, error}] = useLazyQuery(queries.GET_USER, { errorPolicy: 'all' })
-  const [submitErrors, setSubmitErrors] = useState([])
+  const [submit, { loading, data, error }] = useLazyQuery(queries.GET_USER, { errorPolicy: 'all' })
 
-
-  useEffect(() => {
-    if (error) {
-      const graphQLErrors = error.graphQLErrors.map((error) => error.message)
-      const netWorkError = error.networkError.message
-      setSubmitErrors([...graphQLErrors, netWorkError])
-    } else {
-      setSubmitErrors([])
+  /*useEffect(() => {
+    if (!called) {
+      submit({variables: values})
     }
-  }, [data, values]);
+  }, []);*/
+
+
 
   function handleChange(event, name) {
     const value = event.target.value
@@ -44,18 +40,37 @@ function Search() {
     submit({variables: values})
   }
 
+  function displayResult() {
+    if (loading) {
+      return (
+        <div className="search__loading">
+          <i className="fa fa-spinner fa-spin"></i>
+        </div>
+      )
+    }
+
+    if (error) {
+      return <ErrorMessage error={error} className="error--submit" />
+    } else if (data) {
+      return (
+        <div className="search__result">
+          <UserInfo {...data.user} />
+          <RepositoryList {...data.user.repositories} />
+        </div>
+      )
+    }
+  }
+
   return (
     <div className="search">
-      <Form
-        className="search__form"
-        values={values}
-        onChange={handleChange}
-        onSubmit={handleSubmit}
-        submitErrors={submitErrors} />
-      {data && <div className="search__result">
-        <UserInfo {...data.user} />
-        <RepoList {...data.user.repositories} />
-      </div>}
+      <div className="search__header">
+        <Form
+          className="search__form"
+          values={values}
+          onChange={handleChange}
+          onSubmit={handleSubmit} />
+      </div>
+      {displayResult()}
     </div>
   );
 }

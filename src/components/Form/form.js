@@ -9,29 +9,21 @@ function Form({
   className,
   onSubmit,
   onChange,
-  values,
-  submitErrors
+  values
 }) {
 
   return (
     <form onSubmit={onSubmit} className={`form ${className}`}>
-      {(submitErrors && submitErrors.length > 0)
-        && <ul className="form__errors">
-          {submitErrors.map((err, index) => {
-            return <li key={index}>{err}</li>
-            }
-          )}
-        </ul>
-      }
       <Input
-        label="Github user"
         name="login"
         handleChange={(e) => {onChange(e, 'login')}}
         value={values.login}
-        placeholder="please enter a valid Github user"
+        placeholder="Github username"
         isRequired={true}
        />
-      <Button label="submit" />
+      <Button className="form__button form__button--submit" label="gitify">
+        <i className="icon fab fa-github" />
+      </Button>
     </form>
   )
 }
@@ -39,8 +31,7 @@ function Form({
 Form.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  values: PropTypes.object.isRequired,
-  submitErrors: PropTypes.arrayOf(PropTypes.string)
+  values: PropTypes.objectOf(PropTypes.string).isRequired
 }
 
 export default Form
