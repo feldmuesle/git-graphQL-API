@@ -1,5 +1,5 @@
-import React, {useState, useEffect } from 'react';
-import logo from './logo.svg';
+import React from 'react'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 import { Search } from './components/Search/'
 
 import './App.css';
