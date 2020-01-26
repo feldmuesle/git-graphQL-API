@@ -1,68 +1,44 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# What it's about?
 
-## Available Scripts
+Build an interface using React, Apollo & Github's GraphQl API to fetch and display data about a given Github user.
 
-In the project directory, you can run:
+The app is simple, containing only one input for the user login name.
+On submit, the data gets fetched and displayed.
 
-### `npm start`
+![this is how it looks](./app-screen.png)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Get it up running
+1. Clone or download the repository
+2. Open up your terminal and cd into the root of the repository
+3. Run ```npm install``` to install all dependencies
+4. Copy the file ```.env.example``` located in the root or the repository and rename it to ```.env```
+5. Go to your Github account and generate a personal access token for the scope 'user'. If you don't know how, just follow [https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
+6. Replace the placeholder for ```REACT_APP_AUTH_TOKEN``` in you  ```.env``` file with your access token and save the changes.
+7. Now you should be good to go, just run ```npm start```to start up the server and you should be able to see the app running at ```http://localhost:3000/```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Considerations
+The project is created with `create-react-app` which is just a great way to get started without spending a lot of time on setup. After that I wanted to keep things lean and didn't install a lot of additional packages to make things sweeter, but got to have `prop-types`.
 
-### `npm test`
+Since this has been the **very first time** that I have used GraphQL and Apollo, I have chosen not implemented TypeScript (which I'm new to, too) into the project as well. Instead I've spent quite some time getting to know and play around with GitHubs GraphQL API by using Github's GraphQL Explorer,  handle Errors and implemented a simple pagination to fetch more repositories.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Number of Components
+Due to the limited scope of the project, most elements (e.g. inputs, forms, buttons) are only used once or twice and didn't require a React Component. However, I wanted to show my approach as it would be in a regular project.
+I also wanted to show my abilities to handle UI components myself, which is why I didn't use a UI framework.
+Instead I installed `font-awesome` to spice up things with icons.
 
-### `npm run build`
+#### Folder structure
+Each component folder holds at least three files.
+1. `component.js` for the component
+2. `component.css` for the styling of the component
+3. `index.js` for exporting the component
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I found that the components were rather lean, so I didn't also create a `component-container.js`. This is however definitely the approach I would use if there was more business logic to handle.
+I could also have exported `component.js` directly, without the index file, but have from previous experience learned, that it's really neat not to specify a specific component file in the import, since it gives more flexibility to rename a file or move code into multiple files.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Hooks instead of class components
+I'm really fond of React hooks, which is why the entire application is built with functional components only. I tried to be consistent, which is why I also went with a hook for querying, instead of other possible approaches.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Next steps
+* Due to time limitation, there are no tests. This would definitely be worth to work on, since it makes it so much easier to keep on developing on the project without breaking stuff.
+* GraphQL is fun and Github's API seems to have a lot to play with. I will absolutely spend more time on digging around and fiddling with e.g. Mutation!
+* Get TypeScript in there - just for trying it out
